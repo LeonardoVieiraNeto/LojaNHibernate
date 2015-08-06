@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="LojaNHibernate"
+                   namespace="LojaNHibernate.Entidades" >
+  <class name="Produto" table="tb_produto">
+    <cache usage="nonstrict-read-write"/>
+    <id name="IdProduto" access="property" column="id_produto" type="Int32">
+      <generator class="native"></generator>
+    </id>
+    <property name="Nome" not-null="true" access="property" type="String">
+      <column name="nome" length="100" />
+    </property>
+    <property name="Descricao" not-null="true" access="property" type="String">
+      <column name="descricao" length="100" />
+    </property>
+    <property name="Preco" not-null="true" access="property" type="decimal">
+      <column name="preco" />
+    </property>
+    <many-to-one name="Categoria" column="id_categoria"
+                                 class="Categoria" not-null="true" />
+  </class>
+</hibernate-mapping>
